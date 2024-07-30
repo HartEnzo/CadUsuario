@@ -1,13 +1,11 @@
-const prompt = require('prompt-sync')(); // Importa a função prompt do prompt-sync
+const prompt = require('prompt-sync')(); 
 
 let usuarios = [];
 
-// Função para criar um novo usuário
 function criarUsuario() {
     const nome = prompt("Digite o nome do usuário: ");
     const email = prompt("Digite o email do usuário: ");
 
-    // Verifica se o email já está cadastrado
     for (let i = 0; i < usuarios.length; i++) {
         if (usuarios[i].email === email) {
             console.log("Erro: Email já cadastrado.");
@@ -15,10 +13,8 @@ function criarUsuario() {
         }
     }
 
-    // Gera um novo ID baseado no tamanho atual da lista
     const novoId = usuarios.length + 1;
 
-    // Cria um novo usuário e adiciona à lista
     const novoUsuario = {
         id: novoId,
         nome: nome,
@@ -30,7 +26,6 @@ function criarUsuario() {
     console.log("Usuário cadastrado com sucesso.");
 }
 
-// Função para listar todos os usuários cadastrados
 function listarUsuarios() {
     console.log("Usuários cadastrados:");
     usuarios.forEach(usuario => {
@@ -45,7 +40,6 @@ function listarUsuarios() {
     });
 }
 
-// Função para atualizar informações de um usuário
 function atualizarUsuario() {
     const id = parseInt(prompt("Digite o ID do usuário que deseja atualizar: "));
 
@@ -62,7 +56,7 @@ function atualizarUsuario() {
 
     const novoEmail = prompt("Digite o novo email do usuário (deixe em branco para manter): ");
     if (novoEmail.trim() !== '') {
-        // Verifica se o novo email já está cadastrado
+        
         const emailExistente = usuarios.find(u => u.email === novoEmail);
         if (emailExistente && emailExistente.id !== id) {
             console.log("Erro: Email já cadastrado para outro usuário.");
@@ -74,7 +68,6 @@ function atualizarUsuario() {
     console.log("Usuário atualizado com sucesso.");
 }
 
-// Função para adicionar um telefone a um usuário
 function adicionarTelefone() {
     const id = parseInt(prompt("Digite o ID do usuário que deseja adicionar telefone: "));
 
@@ -91,7 +84,6 @@ function adicionarTelefone() {
     console.log("Telefone(s) adicionado(s) com sucesso.");
 }
 
-// Função para excluir um usuário
 function excluirUsuario() {
     const id = parseInt(prompt("Digite o ID do usuário que deseja excluir: "));
 
@@ -105,7 +97,6 @@ function excluirUsuario() {
     console.log("Usuário excluído com sucesso.");
 }
 
-// Função principal para interação com o usuário
 function principal() {
     while (true) {
         console.log("\n### Menu ###");
@@ -143,7 +134,6 @@ function principal() {
     }
 }
 
-// Chamada da função principal para iniciar o programa
 principal();
 
 
